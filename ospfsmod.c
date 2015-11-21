@@ -494,7 +494,7 @@ ospfs_dir_readdir(struct file *filp, void *dirent, filldir_t filldir)
 					if(ok_so_far < 0)
 						return 0;
 					break;
-				case OSPFS_TYPE_SYMLINK:
+				case OSPFS_FTYPE_SYMLINK:
 					ok_so_far = fillfir(dirent, od->od_name, strlen(od->od_name), f_pos, od->od_ino, DT_LNK);
 					if(ok_so_far < 0)
 						return 0;
@@ -518,7 +518,7 @@ ospfs_dir_readdir(struct file *filp, void *dirent, filldir_t filldir)
 		if(f_pos-2 >= dir_oi->oi_size){  // FIX: OSPFS_DIRENTRY_SIZE
 			r = 1;
 			break;
-		}x
+		}
 		
 
 	} // end of while
