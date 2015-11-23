@@ -630,7 +630,7 @@ allocate_block(void)
 static void
 free_block(uint32_t blockno)
 {
-	void *bitmap = ospfs_block(OSPFS_FREEMAP_BLK);
+    void *bitmap = ospfs_block(OSPFS_FREEMAP_BLK);
     int min_blockno = ospfs_super->os_firstinob + ospfs_super->os_ninodes;
     
     //the boot sector, superblock, free-block bitmap and inode blocks will never be freed
@@ -674,10 +674,10 @@ free_block(uint32_t blockno)
 static int32_t
 indir2_index(uint32_t b)
 {
+    // need doubly indirect block
     if(b >= OSPFS_NDIRECT + OSPFS_NINDIRECT)
         return 0;
-	// Your code here.
-	return -1;
+    return -1;
 }
 
 
@@ -695,7 +695,6 @@ indir2_index(uint32_t b)
 static int32_t
 indir_index(uint32_t b)
 {
-	// Your code here.
     if(b < OSPFS_NDIRECT)
         return -1;
     else if (b < OSPFS_NDIRECT + OSPFS_NINDIRECT)
@@ -730,13 +729,14 @@ direct_index(uint32_t b)
 }
 
 
+// static void zero_block(uint32_t block)
+//	Zero out newly allocated block
 static void
 zero_block(uint32_t block){
     char *ptr = (char*)ospfs_block(block);
     int i;
-    for(i = 0; i < OSPFS_BLKSIZE; i++){
+    for(i = 0; i < OSPFS_BLKSIZE; i++)
         ptr[i] = 0;
-    }
 }
 
 
@@ -774,13 +774,13 @@ zero_block(uint32_t block){
 static int
 add_block(ospfs_inode_t *oi)
 {
-	// current number of blocks in file
-	uint32_t n = ospfs_size2nblocks(oi->oi_size);
+    // current number of blocks in file
+    uint32_t n = ospfs_size2nblocks(oi->oi_size);
 
-	// keep track of allocations to free in case of -ENOSPC
-	uint32_t *allocated[2] = { 0, 0 };
+    // keep track of allocations to free in case of -ENOSPC
+    uint32_t *allocated[2] = { 0, 0 };
 
-	/* EXERCISE: Your code here */
+    /* EXERCISE: Your code here */
     // exceed maximum block number
     if(n >= OSPFS_MAXFILEBLKS)
         return -ENOSPC;
@@ -888,10 +888,10 @@ add_block(ospfs_inode_t *oi)
 static int
 remove_block(ospfs_inode_t *oi)
 {
-	// current number of blocks in file
-	uint32_t n = ospfs_size2nblocks(oi->oi_size);
+    // current number of blocks in file
+    uint32_t n = ospfs_size2nblocks(oi->oi_size);
 
-	/* EXERCISE: Your code here */
+    /* EXERCISE: Your code here */
     // empty file
     if(n <= 0)
         return -EIO;
