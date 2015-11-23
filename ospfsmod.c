@@ -1510,7 +1510,7 @@ ospfs_symlink(struct inode *dir, struct dentry *dentry, const char *symname)
     memcpy(symlink->oi_symlink, symname, strlen(symname));
     symlink->oi_symlink[strlen(symname)]='\0';
     
-    // Set directory entry
+    // Get directory entry
     ospfs_direntry_t *new_entry = create_blank_direntry(dir_oi);
     if(IS_ERR(new_entry))
         return PTR_ERR(new_entry);
