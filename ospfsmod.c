@@ -896,6 +896,8 @@ remove_block(ospfs_inode_t *oi)
     if(n <= 0)
         return -EIO;
     
+    n = n-1;
+    
     if(indir2_index(n) == -1){
         if(indir_index(n) == -1){
             // no indirect or doubly-indirect block
@@ -944,7 +946,7 @@ remove_block(ospfs_inode_t *oi)
     }
     
     // update file size
-    oi->oi_size = OSPFS_BLKSIZE * (n-1);
+    oi->oi_size = OSPFS_BLKSIZE * n;
     return 0;
 }
 
