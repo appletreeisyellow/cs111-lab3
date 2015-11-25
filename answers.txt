@@ -11,14 +11,14 @@
 # information you'd like us to know, please add it at the end of the file.
 
 # Partner 1
-Name: 
-Student ID: 
-Email: 
+Name: Chunchun Ye
+Student ID: 304-502-384
+Email: ye_chunchun@ucla.edu
 
-# Partner 2 (if you're working in a team)
-Name: 
-Student ID: 
-Email: 
+# Partner 2
+Name: Kexin Yu
+Student ID: 804-316-935
+Email: kexinyu@ucla.edu
 
 # Extra credit problems
 #Extra credit problem: none
